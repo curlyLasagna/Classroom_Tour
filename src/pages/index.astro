@@ -4,6 +4,10 @@ import Card from '../components/Card.astro';
 ---
 
 <Layout title="Classroom Tours">	
+	<h1>
+		Buildings
+	</h1>
+	<body>
 	<ul role="list" class="image-grid">
 
 			<img src ="Liberal_Arts.png" alt="LA Building Pic"/>
@@ -14,6 +18,7 @@ import Card from '../components/Card.astro';
 
 			<img src ="CFTAB.png" alt="CTFA Building Pic"/>
 		</ul>
+		</body>
 	</main>
 </Layout>
 
@@ -29,7 +34,7 @@ import Card from '../components/Card.astro';
 	}
 
 	html{
-		background-color: white;
+		background-color: whitesmoke;
 	}
 
 	.astro-a {
@@ -42,11 +47,13 @@ import Card from '../components/Card.astro';
 		z-index: -1;
 	}
 	h1 {
+		font-family:serif;
 		font-size: 4rem;
-		font-weight: 700;
+		font-weight: 500;
 		line-height: 1;
-		text-align: center;
-		margin-bottom: 1em;
+		text-align: left;
+		margin-left: 2em;
+		margin-bottom:1em;
 	}
 	.text-gradient {
 		background-image: var(--accent-gradient);
@@ -78,6 +85,6 @@ import Card from '../components/Card.astro';
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
 		gap: 2rem;
-		padding: 0;
+		padding-left: 3rem;
 	}
 </style>
