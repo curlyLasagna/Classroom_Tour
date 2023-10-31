@@ -1,0 +1,36 @@
+---
+import type { GetStaticPaths } from "astro";
+import Layout from "../../layouts/Layout.astro";
+export const getStaticPaths = (() => {
+    return [{params: {room: "yr0201"}}];
+}) satisfies GetStaticPaths;
+const {room} = Astro.params
+---
+
+<Layout title={room}>
+	<h1> 
+		{room}
+	</h1>
+
+		<body> 
+			<ul role="list" class="image-grid">
+	
+					<img src= "yr0201.png"/>
+				<div class = "row">
+					<div class = "column">
+
+					  <img src= "yr0201-2.png" style="width:200px;height:200px;"/>
+
+					</div>
+					<div class = "column">
+						<img src= "IWC.png" style="width:200px;height:200px;"/>
+					</div>
+					<div class = "column">
+						<img src="IW.png" style="width:200px;height:200px;"/>
+					</div>
+			</div>
+			</ul>
+		</body>
+
+</Layout>
+
