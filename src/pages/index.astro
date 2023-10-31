@@ -10,22 +10,22 @@ import Card from '../components/Card.astro';
 	
 	<body> 
 		<ul role="list" class="image-grid">
-
+            <div class="image_format">
 				<img src= "yr0201.png"/>
-				<p>This is a beautiful picture.</p>
-			<div class = "row">
-				<div class = "column">
-
-				  <img src= "yr0201-2.png" style="width:200px;height:200px;"/>
-
-				</div>
-				<div class = "column">
-					<img src= "IWC.png" style="width:200px;height:200px;"/>
-				</div>
-				<div class = "column">
-					<img src="IW.png" style="width:200px;height:200px;"/>
-				</div>
-		</div>
+				<p >Seat count: 37<br> Wireless display: yes.</p>
+            </div>
+            
+            <div class = "row">
+                    <div class = "column">
+                        <img src= "yr0201-2.png" style="width:200px;height:200px;"/>
+                    </div>
+                    <div class = "column">
+                        <img src= "IWC.png" style="width:200px;height:200px;"/>
+                    </div>
+                    <div class = "column">
+                        <img src="IW.png" style="width:200px;height:200px;"/>
+                    </div>
+		    </div>
 		</ul>
 	</body>
 
@@ -42,6 +42,7 @@ import Card from '../components/Card.astro';
         font-size: 20px;
         line-height: 1.6;
     }
+
     .astro-a {
         position: absolute;
         top: -32px;
@@ -84,6 +85,7 @@ import Card from '../components/Card.astro';
         border-radius: 4px;
         padding: 0.3em 0.4em;
     }
+
     .instructions strong {
         color: rgb(var(--accent-light));
     }
@@ -91,13 +93,14 @@ import Card from '../components/Card.astro';
     .image-grid {
       float: left;
       margin-left: 2em;
+      
     }
   
     .column {
         float: left;
         width: 33.33%;
         padding: 4px;
-        margin-top: 2em;
+        margin-top: 1em;
     }
 
     .row {
@@ -105,10 +108,19 @@ import Card from '../components/Card.astro';
 
      }
 
-    p{
+    p
+    {
      font-size: 20px;
      padding-left: 20px;
     }
+
+    .image_format
+    {
+      display: flex;
+      flex-direction: row;
+    }
+
+    
 
 </style>
 
