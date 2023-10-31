@@ -1,11 +1,12 @@
 ---
 import type { GetStaticPaths } from "astro";
-export async function const getStaticPaths = (() => {
-    return [
-        params: {},
-        props: {},
-    ];
+import Layout from "../../layouts/Layout.astro";
+export const getStaticPaths = (() => {
+    return [{params: {buildings: "Liberal Arts"}}];
 }) satisfies GetStaticPaths;
-const { ?? } = Astro.params;
-const { ?? } = Astro.props;
+
+const {buildings} = Astro.params;
 ---
+<Layout title={buildings}>
+    <h1>{buildings}</h1>
+</Layout>
