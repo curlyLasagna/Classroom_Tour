@@ -1,6 +1,11 @@
 ---
+<<<<<<< HEAD
 import Header from '../components/Header.astro'
 
+=======
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+>>>>>>> f047b6edc3923b46c9a201c00f368dcbd79e67f2
 interface Props {
 	title: string;
 }
@@ -22,12 +27,13 @@ const { title } = Astro.props;
 		<Header/>
 		<slot />
 	</body>
+
 </html>
 <style is:global>
 	
 	html {
 		font-family: system-ui, sans-serif;
-		background: #13151a;
+		background: white;
 		background-size: 224px;
 	}
 	code {
