@@ -1,12 +1,23 @@
 ---
+import { supabase } from "../../supabase";
 import type { GetStaticPaths } from "astro";
 import Layout from "../../layouts/Layout.astro";
 export const getStaticPaths = (() => {
-    return [{params: {buildings: "Liberal Arts"}}];
+    return [{ params: { buildings: "Liberal Arts" } }];
 }) satisfies GetStaticPaths;
 
-const {buildings} = Astro.params;
+const { buildings } = Astro.params;
+
+let { data: Building, error } = await supabase
+    .from("Building")
+    .select("BUILDING_NAME");
+
+console.log(Building);
 ---
+
 <Layout title={buildings}>
     <h1>{buildings}</h1>
+    <ul>
+        {Building?.map((building) => <li>{building.BUILDING_NAME}</li>)}
+    </ul>
 </Layout>
