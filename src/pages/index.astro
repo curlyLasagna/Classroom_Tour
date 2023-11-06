@@ -5,7 +5,8 @@ import { supabase } from "../supabase";
 
 let { data: Building} = await supabase
 	.from("Building")
-	.select();
+	.select(`BUILDING_NAME, BUILDING_CODE`)
+	.eq('BUILDING_CODE', 'YR');
 
 ---
 
