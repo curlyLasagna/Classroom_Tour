@@ -1,15 +1,28 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import { supabase } from "../supabase";
+
+let { data: Building} = await supabase
+	.from("Building")
+	.select();
+
 ---
 
-<Layout title="Classroom Tours">	
-	<h1>
-		Buildings
-	</h1>
-	<Card title="7800 York Road" href='/buildings/YR'></Card>
+<Layout title="Classroom Tours">
+	<h1>Buildings</h1>
+	<div class="grid grid-cols-2 md:grid-cols-3 gap4">
+		{
+			Building?.map((b) => (
+				<Card
+					title={b.BUILDING_NAME}
+					href="/buildings/YR"
+					building={b.BUILDING_CODE}
+				/>
+			))
+		}
+	</div>
 </Layout>
-
 
 <style>
 	main {
@@ -22,39 +35,36 @@ import Card from '../components/Card.astro';
 	}
 
 	h1 {
-		font-family:serif;
+		font-family: serif;
 		font-size: 4rem;
 		font-weight: 500;
 		line-height: 1;
 		text-align: left;
 		margin-left: 2em;
-		margin-bottom:1em;
+		margin-bottom: 1em;
 	}
-	
+
 	.image-grid {
-		margin:5rem;
+		margin: 5rem;
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
 		gap: 2rem;
 		padding-left: 3rem;
 	}
-  
+
 	.column {
-        float: left;
-        width: 33.33%;
-        padding: 4px;
+		float: left;
+		width: 33.33%;
+		padding: 4px;
 		margin-top: 2em;
 	}
 
 	.row {
-     display: flex;
-
-     }
-
-	p{
-     font-size: 20px;
-	 padding-left: 20px;
+		display: flex;
 	}
 
+	p {
+		font-size: 20px;
+		padding-left: 20px;
+	}
 </style>
-
