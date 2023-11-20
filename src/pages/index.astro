@@ -2,6 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import { supabase } from "../supabase";
+import Slideshow from "../components/Slideshow.astro";
+import { Debug } from "astro:components";
 
 let { data: Building} = await supabase
 	.from("Building")
@@ -11,13 +13,13 @@ let { data: Building} = await supabase
 ---
 
 <Layout title="Classroom Tours">
-	<h1>Buildings</h1>
+	<h1 class="text-lg">Buildings</h1>
 	<div class="grid grid-cols-2 md:grid-cols-3 gap4">
 		{
 			Building?.map((b) => (
 				<Card
 					title={b.BUILDING_NAME}
-					href="/buildings/YR"
+					href=`/buildings/${b.BUILDING_CODE}`
 					building={b.BUILDING_CODE}
 				/>
 			))
@@ -25,47 +27,6 @@ let { data: Building} = await supabase
 	</div>
 </Layout>
 
-<style>
-	main {
-		margin: auto;
-		padding: 1rem;
-		width: 800px;
-		max-width: calc(100% - 2rem);
-		font-size: 20px;
-		line-height: 1.6;
-	}
+<Slideshow room="0201"></Slideshow>
 
-	h1 {
-		font-family: serif;
-		font-size: 4rem;
-		font-weight: 500;
-		line-height: 1;
-		text-align: left;
-		margin-left: 2em;
-		margin-bottom: 1em;
-	}
-
-	.image-grid {
-		margin: 5rem;
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 2rem;
-		padding-left: 3rem;
-	}
-
-	.column {
-		float: left;
-		width: 33.33%;
-		padding: 4px;
-		margin-top: 2em;
-	}
-
-	.row {
-		display: flex;
-	}
-
-	p {
-		font-size: 20px;
-		padding-left: 20px;
-	}
 </style>
