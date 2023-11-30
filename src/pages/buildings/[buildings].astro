@@ -1,16 +1,16 @@
 ---
+
 import { supabase } from "../../supabase";
-import type { GetStaticPaths } from "astro";
 import Layout from "../../layouts/Layout.astro";
 export const getStaticPaths = (() => {
     return [{ params: { buildings: "Liberal Arts" } }];
-}) satisfies GetStaticPaths;
+});
 
 const { buildings } = Astro.params;
 
 let { data: Building, error } = await supabase
     .from("Building")
-    .select("BUILDING_NAME");
+    .filter('BUILDING_CODE', 'in', '(YR, BU, AD)')
 
 console.log(Building);
 ---
