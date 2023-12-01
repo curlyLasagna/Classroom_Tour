@@ -1,54 +1,52 @@
-# Astro Starter Kit: Basics
+<h1 align="center">Classroom Tours 🏫</h1>
+<h4 align="center">
+  A COSC 412: Software Engineering project by Tier6
+</h4>
 
-```sh
-npm create astro@latest -- --template basics
-```
+## Purpose
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+This site is a proposed modern rewrite of TU's [Virtual Tour](https://webapps.towson.edu/classroomtechnology/virtualtour/), alongside extra features such as an AI chatbot that answers frequently answered questions and the ability to upload and edit entries within the browser.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Tech Stack
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+<div style="width: 50%; text-align: center; margin: auto">
 
-## 🚀 Project Structure
+[![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
+[![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Built with Astro](https://astro.badg.es/v2/built-with-astro/small.svg)](https://astro.build) 
+[![Share to Community](https://huggingface.co/datasets/huggingface/badges/resolve/main/powered-by-huggingface-light.svg)](https://huggingface.co)
 
-Inside of your Astro project, you'll see the following folders and files:
+</div>
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## Development
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+If you want to run this site on your system or if you'd like to do further development.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### Dependencies
 
-Any static assets, like images, can be placed in the `public/` directory.
+- Git
+- Supabase account
+- Node
+- Text editor
+  - We use VSCode. The following are the extensions we use:
+    - [Astro](https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode)
+    - [Tailwind](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
 
-## 🧞 Commands
+### Running
 
-All commands are run from the root of the project, from a terminal:
+1. `git clone https://github.com/Dami5021/Classroom_Tour.git` to clone the repository
+2. `cd Classroom_tour` to change directory
+3. `npm i` to install dependencies.
+4. Create a `.env` file that contains these environment variables `PUBLIC_SUPABASE_URL` & `PUBLIC_SUPABASE_ANON_KEY`
+5. `npm run dev` to start the application on `localhost:4321`
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
+## Team members
+- [Timothy Wroten]()
+- [Luis Gascon](https://github.com/curlyLasagna)
+- [Oluwadamilola Abdul](https://github.com/Dami5021)
+- [Kai Asamoah]()
+- [Ethan Webb]()
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+<a href="https://github.com/Dami5021/TUs_CCLT_Virtual_Tour_website/graphs/contributors">
+<img src="https://contrib.rocks/image?repo=Dami5021/TUs_CCLT_Virtual_Tour_website" />
