@@ -4,13 +4,16 @@ import Layout from "../../layouts/Layout.astro";
 import { supabase } from "../../supabase";
 let { data: Room} = await supabase
 	.from("Rooms")
-	.select('COLLECTION_CODE')
-export const getStaticPaths = (() => {
-    return [{params: {room: "yr0201"}}];
-}) satisfies GetStaticPaths;
+	.select('COLLECTION_CODE');
 ---
 
-
 <Layout title=yo>
+    {Room?.map((r) => (
+        <p>{r}</p>
+    )
+    )}
+    
+	<h1>		
+	</h1>
 </Layout>
 

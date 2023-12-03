@@ -4,12 +4,12 @@ import Card from "../components/Card.astro";
 import { supabase } from "../supabase";
 import Slideshow from "../components/Slideshow.astro";
 import { Debug } from "astro:components";
+import Bot from "../components/Bot.astro";
 
 let { data: Building} = await supabase
 	.from("Building")
 	.select(`BUILDING_NAME, BUILDING_CODE`)
-	.eq('BUILDING_CODE', 'YR');
-
+	.in('BUILDING_CODE', ['HH', 'YR', 'SC'])
 ---
 
 <Layout title="Classroom Tours">
@@ -19,7 +19,6 @@ let { data: Building} = await supabase
 			Building?.map((b) => (
 				<Card
 					title={b.BUILDING_NAME}
-					href=`/buildings/${b.BUILDING_CODE}`
 					building={b.BUILDING_CODE}
 				/>
 			))
@@ -27,6 +26,7 @@ let { data: Building} = await supabase
 	</div>
 </Layout>
 
-<Slideshow room="0201"></Slideshow>
+
+<!-- <Slideshow room="0201"></Slideshow> -->
 
 </style>
