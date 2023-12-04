@@ -10,17 +10,20 @@ export async function getStaticPaths() {
     return Building?.map((b) => {
         return {
             params: { building: b.BUILDING_CODE },
-            props: {b},
+            props: { b },
         };
     });
 }
+
+const image = supabase.storage.from("buildings").getPublicUrl("YR/main.jpg");
 
 const { b } = Astro.props;
 ---
 
 <Layout title={b.BUILDING_NAME}>
+    <img src={image.data.publicUrl} class="w-1/2 h-21" alt="" srcset="" />
     <h1>List of {b.BUILDING_NAME} rooms</h1>
     <ul>
         <li></li>
     </ul>
-</Layout>
+</Layout>1
