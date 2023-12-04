@@ -1,0 +1,29 @@
+---
+import type { GetStaticPaths } from "astro";
+import Layout from "../../layouts/Layout.astro";
+import { supabase } from "../../supabase";
+let { data: Room} = await supabase
+	.from("Rooms")
+	.select('COLLECTION_CODE')
+export const getStaticPaths = (() => {
+    return [{params: {room: "YR0201"}}];
+}) satisfies GetStaticPaths;
+
+
+const {data, error } = await supabase
+    .from("Items")
+    .select('MFG_CODE, MFG_MAKE_AND_MODEL')
+    .eq("COLLECTION_CODE", "YR0201")
+---
+
+<Layout title=yr>
+    <ul>
+        {data?.map((d) => (
+            <li>
+                {d.MFG_CODE + '\t | \t'}
+                {d.MFG_MAKE_AND_MODEL}</li>
+        )
+        )}
+    </ul>
+</Layout>
+
