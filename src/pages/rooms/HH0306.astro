@@ -1,0 +1,16 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { supabase } from "../../supabase";
+
+const { data:images, error } = await supabase
+    .storage
+    .from("buildings")
+    .list()
+---
+
+<Layout title="HH0306">
+    <p>{images}</p>
+    {images?.map((image) =>
+        <p>{image}</p>
+    )}
+</Layout>
