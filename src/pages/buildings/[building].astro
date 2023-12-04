@@ -1,0 +1,26 @@
+---
+import { supabase } from "../../supabase";
+
+import Layout from "../../layouts/Layout.astro";
+export async function getStaticPaths() {
+    let { data: Building, error } = await supabase
+        .from("Building")
+        .select("*")
+        .in("BUILDING_CODE", ["HH", "SC", "YR"]);
+    return Building?.map((b) => {
+        return {
+            params: { building: b.BUILDING_CODE },
+            props: {b},
+        };
+    });
+}
+
+const { b } = Astro.props;
+---
+
+<Layout title={b.BUILDING_NAME}>
+    <h1>List of {b.BUILDING_NAME} rooms</h1>
+    <ul>
+        <li></li>
+    </ul>
+</Layout>
