@@ -2,11 +2,10 @@
 interface Props {
     title: string;
     building: string;
-    href: string;
 }
 import { supabase } from "../supabase";
 
-const { href, title, building } = Astro.props;
+const { title, building } = Astro.props;
 const image = supabase.storage
     .from("buildings")
     .getPublicUrl(`${building}/main.jpg`);

@@ -1,9 +1,21 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import { ViewTransitions } from "astro:transitions";
+import Chat from "../components/Chatbot/Chat.tsx";
 interface Props {
 	title: string;
 }
+
+import {
+    MainContainer,
+    MessageInput,
+    MessageContainer,
+	MessageHeader,
+	MessageList
+} from "@minchat/react-chat-ui";
+
+
 
 const { title } = Astro.props;
 ---
@@ -16,11 +28,29 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		<ViewTransitions/>
 		<title>{title}</title>
 	</head>
 	<body>
 		<Header />
+		<!-- <Chat client:load/> -->
 		<slot />
+		<MainContainer style={{ height: '100vh' }} client:load>
+			<MessageContainer client:load>
+				<MessageHeader/>
+				<MessageList
+					currentUserId='bot'
+					messages={[{
+						text: "CCLT bot, reporting for duty!",
+						user: {
+							id: 'bot',
+							name: 'Markus',
+						},
+					}]}
+				 client:load>
+				<MessageInput placeholder="Type message here" client:load/>
+			</MessageContainer>
+		</MainContainer>
 	</body>
 	<Footer />
 </html>

@@ -6,10 +6,11 @@ import Slideshow from "../components/Slideshow.astro";
 import { Debug } from "astro:components";
 import Bot from "../components/Bot.astro";
 
-let { data: Building} = await supabase
+let { data: Building } = await supabase
 	.from("Building")
 	.select(`BUILDING_NAME, BUILDING_CODE`)
-	.in('BUILDING_CODE', ['HH', 'YR', 'SC'])
+	.in("BUILDING_CODE", ["HH", "YR", "SC"]);
+
 ---
 
 <Layout title="Classroom Tours">
@@ -17,16 +18,8 @@ let { data: Building} = await supabase
 	<div class="grid grid-cols-2 md:grid-cols-3 gap4">
 		{
 			Building?.map((b) => (
-				<Card
-					title={b.BUILDING_NAME}
-					building={b.BUILDING_CODE}
-				/>
+				<Card title={b.BUILDING_NAME} building={b.BUILDING_CODE} />
 			))
 		}
 	</div>
 </Layout>
-
-
-<!-- <Slideshow room="0201"></Slideshow> -->
-
-</style>

@@ -2,21 +2,36 @@
 import type { GetStaticPaths } from "astro";
 import Layout from "../../layouts/Layout.astro";
 import { supabase } from "../../supabase";
-let { data: Room} = await supabase
-	.from("Rooms")
-	.select('COLLECTION_CODE')
+import type { imageConfig } from "astro:assets";
+import type { array } from "astro/zod";
+import Slideshow from "../../components/Slideshow.astro";
+    
 export const getStaticPaths = (() => {
     return [{params: {room: "SC1323"}}];
 }) satisfies GetStaticPaths;
-
 
 const {data, error } = await supabase
     .from("Items")
     .select('MFG_CODE, MFG_MAKE_AND_MODEL')
     .eq("COLLECTION_CODE", "SC1323")
+
+const {data: image_list} = await supabase
+    .storage
+    .from('buildings')
+    .list('SC/SC1323')
+
+let images: any[] = []
+image_list?.forEach(image => {
+    images.push(supabase.storage.from('buildings').getPublicUrl(`SC/SC1323/${image.name}`))
+});
+
 ---
 
 <Layout title=sc>
+    <Slideshow room="" image_count={2} image_url=""></Slideshow>
+    {images?.map((image) => 
+        <img src=`${image.data.publicUrl}` alt="" />
+    )}
     <ul>
         {data?.map((d) => (
             <li>
@@ -26,4 +41,3 @@ const {data, error } = await supabase
         )}
     </ul>
 </Layout>
-
