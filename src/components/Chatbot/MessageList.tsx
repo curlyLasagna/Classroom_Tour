@@ -13,7 +13,7 @@ interface MessageListProps {
 const MessageList: React.FC<MessageListProps> = ({ messages }) => (
   <div className="message-list">
     {messages.map((message, index) => (
-      <div key={index} className={`message ${message.sender === 'user' ? 'bg-red-200' : 'bg-green-200'} rounded-lg p-2 mb-2`}>
+      <div key={index} className={`message ${message.sender}`}>
         {message.text}
       </div>
     ))}

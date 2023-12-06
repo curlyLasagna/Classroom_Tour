@@ -6,6 +6,7 @@ import ChatInput from './Input';
 interface Message {
   text: string;
   sender: 'user' | 'bot';
+  token: string
 }
 
 const Chat: React.FC = () => {
@@ -15,7 +16,7 @@ const Chat: React.FC = () => {
       "https://api-inference.huggingface.co/models/deepset/roberta-base-squad2",
       {
         headers: {
-          Authorization: `Bearer ${import.meta.env.HUGGING_FACE_KEY}`,
+          Authorization: `Bearer ${import.meta.env.PUBLIC_HUGGING_FACE_KEY}`,
         },
         method: "POST",
         body: JSON.stringify(data),
@@ -34,12 +35,18 @@ const Chat: React.FC = () => {
       const response = query({
         inputs: {
           question: text,
-          context: "If there's no display on the computer, make sure the computer turned on. Restart the system if it's frozen. If you can't understand the message sent, reply with Call 4Tech. My name is Luis. I am doing well"
+          context: 
+          `If there's no display on the computer, make sure the computer turned on. 
+          If the system is frozen, restart the system by turning off the power supply.
+          For all other inputs say Call 4Tech at 410-704-8324. 
+          My name is Robert. I am here to answer your questions regarding tech and maybe campus dining
+          Towson's dining hall doesn't even come close to Goucher's
+          Denny's on campus is underrated
+          The union is home to a community of rats. They love Dunkin Dougnuts the best`
         }
       })
 
       const data = await response
-      console.log(data)
 
       // Add API response to the message list
       setMessages([...messages, { text: data.answer, sender: 'bot' }]);

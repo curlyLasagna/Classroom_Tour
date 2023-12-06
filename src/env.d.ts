@@ -1,7 +1,7 @@
 interface ImportMetaEnv {
     readonly SUPABASE_URL: string
     readonly SUPABASE_ANON_KEY: string
-    readonly HUGGING_FACE_KEY: string
+    readonly PUBLIC_HUGGING_FACE_KEY: string
   }
   
   interface ImportMeta {

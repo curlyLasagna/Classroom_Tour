@@ -2,10 +2,11 @@
 import { supabase } from "../../supabase";
 
 import Layout from "../../layouts/Layout.astro";
+import RoomLink from "../../components/RoomLink.astro";
 export async function getStaticPaths() {
     let { data: Building, error } = await supabase
         .from("Building")
-        .select(`*, Rooms ( COLLECTION_CODE )`)
+        .select(`BUILDING_CODE, BUILDING_NAME, Rooms ( COLLECTION_CODE )`)
         .in("BUILDING_CODE", ["HH", "SC", "YR"]);
     return Building?.map((b) => {
         return {
@@ -16,27 +17,12 @@ export async function getStaticPaths() {
 }
 
 const { b } = Astro.props;
-b.Rooms?.map((room) => {
-                console.log(room.COLLECTION_CODE)
-            })
-const image = supabase.storage.from("buildings").getPublicUrl("YR/main.jpg");
+const image = supabase.storage.from("buildings").getPublicUrl(`${b.BUILDING_CODE}/main.jpg`);
 ---
 
 <Layout title={b.BUILDING_NAME}>
     <img src={image.data.publicUrl} class="w-1/2 h-21" alt="" srcset="" />
     <h1>List of {b.BUILDING_NAME} rooms</h1>
 
-    <p>{b.Rooms[0].COLLECTION_CODE}</p>
-    {
-        b.Rooms?.map((room) => {
-            <p>room.COLLECTION_CODE</p>
-        })
-    }
-    <ul>
-        {
-            b.Rooms?.map((room) => {
-                <li>`${room.COLLECTION_CODE}`</li>
-            })
-        }
-    </ul>
+    <RoomLink building=`${b.BUILDING_CODE}` collection_code=`${b.Rooms[0].COLLECTION_CODE}`/>
 </Layout>

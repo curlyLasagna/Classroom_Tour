@@ -10,7 +10,6 @@ let { data: Building } = await supabase
 	.from("Building")
 	.select(`BUILDING_NAME, BUILDING_CODE`)
 	.in("BUILDING_CODE", ["HH", "YR", "SC"]);
-
 ---
 
 <Layout title="Classroom Tours">
