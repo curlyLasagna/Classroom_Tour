@@ -42,7 +42,9 @@ const Chat: React.FC = () => {
           My name is Robert. I am here to answer your questions regarding tech and maybe campus dining
           Towson's dining hall doesn't even come close to Goucher's
           Denny's on campus is underrated
-          The union is home to a community of rats. They love Dunkin Dougnuts the best`
+          The union is home to a community of rats. 
+          The rats love Dunkin Donuts the best.
+          `
         }
       })
 

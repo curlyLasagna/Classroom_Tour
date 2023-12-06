@@ -1,0 +1,67 @@
+---
+import { supabase } from "../../../supabase";
+import Layout from "../../../layouts/Layout.astro";
+import Slideshow from "../../../components/Slideshow.astro";
+
+export async function getStaticPaths() {
+	const { data: rooms, error } = await supabase
+		.from("Rooms")
+		.select(`COLLECTION_CODE, BUILDING_CODE`)
+		.neq("BUILDING_CODE", "NULL");
+	return rooms?.map((room) => {
+		return {
+			params: { room: room.COLLECTION_CODE },
+			props: { room },
+		};
+	});
+}
+
+const { room } = Astro.props;
+console.log(room)
+const { data, error } = await supabase
+	.from("Items")
+	.select("MFG_CODE, MFG_MAKE_AND_MODEL")
+	.eq("COLLECTION_CODE", `${room.COLLECTION_CODE}`);
+
+const { data: image_list } = await supabase.storage
+	.from("buildings")
+	.list(`${room.BUILDING_CODE}/${room.COLLECTION_CODE}`)
+
+let images: any[] = [];
+image_list?.forEach((image) => {
+	console.log(image.name)
+	images.push(
+		supabase.storage
+			.from("buildings")
+			.getPublicUrl(`${room.BUILDING_CODE}/${room.COLLECTION_CODE}/${image.name}`),
+	);
+});
+---
+
+<Layout title={room.COLLECTION_CODE}>
+	<Slideshow img_list={images}></Slideshow>
+	<table class="table-fixed border-separate border border-slate-500">
+		<thead>
+			<tr>
+				<th class="border border-slate-600 text-left pr-10"
+					>Manufacturer</th
+				>
+				<th class="border border-slate-600 text-left pl-3">Model</th>
+			</tr>
+		</thead>
+		<tbody>
+			{
+				data?.map((d) => (
+					<tr>
+						<td class="border border-slate-600 pr-10">
+							{d.MFG_CODE}
+						</td>
+						<td class="border border-slate-600 pl-3">
+							{d.MFG_MAKE_AND_MODEL}
+						</td>
+					</tr>
+				))
+			}
+		</tbody>
+	</table>
+</Layout>

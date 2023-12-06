@@ -4,7 +4,7 @@ import Layout from "../../layouts/Layout.astro";
 import { supabase } from "../../supabase";
 import type { imageConfig } from "astro:assets";
 import type { array } from "astro/zod";
-import Slideshow from "../../components/Slideshow.astro";
+import Slideshow from "../../components/Slideshow.atro";
     
 export const getStaticPaths = (() => {
     return [{params: {room: "SC1323"}}];
@@ -40,4 +40,4 @@ image_list?.forEach(image => {
         )
         )}
     </ul>
-</Layout>
+</Layout>../../components/Slideshow.tsx

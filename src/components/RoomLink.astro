@@ -4,14 +4,14 @@ interface Props {
     collection_code: string;
 }
 
-import type { GetStaticPaths } from "astro";
-import { supabase } from "../supabase";
-const { data: Room} = await supabase
-	.from("Rooms")
-	.select('COLLECTION_CODE')
+import { build, type GetStaticPaths } from "astro";
+// import { supabase } from "../supabase";
+// const { data: Room} = await supabase
+// 	.from("Rooms")
+// 	.select('COLLECTION_CODE')
 
-// const { building, collection_code } = Astro.props;
-
+const { building, collection_code } = Astro.props;
+console.log(building, collection_code)
 
 
 // export const getStaticPaths = (() => {
@@ -20,4 +20,4 @@ const { data: Room} = await supabase
 
 ---
 
-<!-- <a href=`rooms/${}`> <h4>{}</h4></a> -->
+<a href=`rooms/${collection_code}`> <h4>{collection_code}</h4></a>
