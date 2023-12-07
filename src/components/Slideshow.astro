@@ -4,9 +4,10 @@ interface Props {
 }
 
 const { img_list } = Astro.props;
-img_list.map((im) => {
-    console.log(im.data.publicUrl);
-});
+// const { img_list } = Astro.props;
+// img_list.map((im) => {
+//     console.log(im.data.publicUrl);
+// });
 ---
 
 <div id="default-carousel" class="relative w-full" data-carousel="slide">
@@ -16,12 +17,12 @@ img_list.map((im) => {
          {
             img_list?.map((image) => (
                 <div
-                    class="hidden duration-700 ease-in-out"
+                    class="duration-700 ease-in-out"
                     data-carousel-item
                 >
                     <img
                         src={image.data.publicUrl}
-                        class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                        class="absolute block w-1/2 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
                         alt="Wild Landscape"
                     />
                 </div>
