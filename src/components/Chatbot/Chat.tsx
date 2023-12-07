@@ -37,10 +37,10 @@ const Chat: React.FC = () => {
           question: text,
           context: 
           `If there's no display on the computer, make sure the computer turned on. 
-          If the system is frozen, restart the system by turning off the power supply.
+          If the system is frozen, restart the system by turning off and turning on the power supply.
+          Projector doesn't show anything then check if "No show" is enabled on the touch panel.
           For all other inputs say Call 4Tech at 410-704-8324. 
           My name is Robert. I am here to answer your questions regarding tech and maybe campus dining
-          Towson's dining hall doesn't even come close to Goucher's
           Denny's on campus is underrated
           The union is home to a community of rats. 
           The rats love Dunkin Donuts the best.

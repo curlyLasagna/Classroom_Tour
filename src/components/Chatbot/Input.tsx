@@ -20,7 +20,7 @@ const ChatInput: React.FC<Input> = ({ onSubmit }) => {
     <form onSubmit={handleSubmit} className="chat-input-form">
       <input
         type="text"
-        placeholder="Type a message..."
+        placeholder="Ask me a question!"
         value={inputText}
         onChange={(e) => setInputText(e.target.value)}
       />

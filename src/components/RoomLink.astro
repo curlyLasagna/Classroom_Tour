@@ -1,23 +1,12 @@
 ---
 interface Props {
-    building: string;
     collection_code: string;
 }
 
-import { build, type GetStaticPaths } from "astro";
-// import { supabase } from "../supabase";
-// const { data: Room} = await supabase
-// 	.from("Rooms")
-// 	.select('COLLECTION_CODE')
-
-const { building, collection_code } = Astro.props;
-console.log(building, collection_code)
-
-
-// export const getStaticPaths = (() => {
-//     return [{params: {collection_code: collection_code}}];
-// }) satisfies GetStaticPaths;
-
+const { collection_code } = Astro.props;
 ---
 
-<a href=`rooms/${collection_code}`> <h4>{collection_code}</h4></a>
+
+<a href=`rooms/${collection_code}`> 
+    <button type="button" class="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{collection_code}</button>
+</a>

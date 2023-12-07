@@ -21,8 +21,13 @@ const image = supabase.storage.from("buildings").getPublicUrl(`${b.BUILDING_CODE
 ---
 
 <Layout title={b.BUILDING_NAME}>
-    <img src={image.data.publicUrl} class="w-1/2 h-21" alt="" srcset="" />
-    <h1>List of {b.BUILDING_NAME} rooms</h1>
-
-    <RoomLink building={b.BUILDING_CODE} collection_code={b.Rooms[0].COLLECTION_CODE}/>
+    <div class="grid grid-cols-2 gap-3">
+        <div class="col-span-1">
+            <img src={image.data.publicUrl} class="h-auto" alt="" srcset="" />
+        </div>
+        <div class="col-span-1">
+            <h1 class="text-3xl">List of {b.BUILDING_NAME} rooms</h1>
+            <RoomLink building={b.BUILDING_CODE} collection_code={b.Rooms[0].COLLECTION_CODE}/>
+        </div>
+    </div>
 </Layout>
