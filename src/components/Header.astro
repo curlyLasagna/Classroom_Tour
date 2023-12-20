@@ -1,25 +1,16 @@
----
-import MenuIcon from "@mui/icons-material";
----
-
-<nav class="bg-white mb-5 mt-0 sticky top-0">
+<nav class="bg-black-tu mb-5 mt-0 sticky top-0 z-50">
+    <!-- <div class="columns-2"> -->
     <div
-        class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+        class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 columns-2"
     >
-        <a class="col1 flex justify-start place-content start ps-8" href="/"
-            ><img src="/tu_logo.png" alt="TU Logo" width="250" height="125" /></a
+        <a class="flex justify-start" href="/"
+            ><img src="/logo.png" alt="TU Logo" width="250" height="125" /></a
         >
-        <a class="col2 flex justify-end pe-9"
-            ><input type="text" placeholder="Search Classrooms..." />
-            <img
-                src="/search_icon.png"
-                alt='Search"'
-                width="25"
-                height="25"
-            /></a
-        >
+        <div><button class="bg-gold px-3.5 py-1.5 font-semibold mx-auto flex justify-end uppercase">admin log-in</button></div>
     </div>
-    <ul class="flex p-2 mt-0 justify-around text-sm">
+    <!-- </div> -->
+
+    <ul class="flex p-2 mt-0 justify-around text-sm text-black-tu bg-gold">
         <li>
             <a
                 href="https://outlook.office365.com/owa/calendar/BOOKINGSOTSCCLT@tu.onmicrosoft.com/bookings//"
@@ -35,4 +26,5 @@ import MenuIcon from "@mui/icons-material";
             <a href="#">Admin Login</a>
         </li>
     </ul>
+    <div></div>
 </nav>

@@ -2,7 +2,7 @@
 import { supabase } from "../../supabase";
 
 import Layout from "../../layouts/Layout.astro";
-import RoomLink from "../../components/RoomLink.astro";
+import RoomCard from "../../components/RoomCard.astro";
 export async function getStaticPaths() {
     let { data: Building, error } = await supabase
         .from("Building")
@@ -27,7 +27,7 @@ const image = supabase.storage.from("buildings").getPublicUrl(`${b.BUILDING_CODE
         </div>
         <div class="col-span-1">
             <h1 class="text-3xl">List of {b.BUILDING_NAME} rooms</h1>
-            <RoomLink building={b.BUILDING_CODE} collection_code={b.Rooms[0].COLLECTION_CODE}/>
+            <RoomCard building={b.BUILDING_CODE} collection_code={b.Rooms[0].COLLECTION_CODE}/>
         </div>
     </div>
 </Layout>
