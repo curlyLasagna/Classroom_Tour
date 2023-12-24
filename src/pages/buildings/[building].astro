@@ -27,7 +27,7 @@ const image = supabase.storage.from("buildings").getPublicUrl(`${b.BUILDING_CODE
         </div>
         <div class="col-span-1">
             <h1 class="text-3xl">List of {b.BUILDING_NAME} rooms</h1>
-            <RoomCard building={b.BUILDING_CODE} collection_code={b.Rooms[0].COLLECTION_CODE}/>
+            <RoomCard collection_code={b.Rooms[0].COLLECTION_CODE}/>
         </div>
     </div>
 </Layout>
