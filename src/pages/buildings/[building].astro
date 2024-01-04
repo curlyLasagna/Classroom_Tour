@@ -6,7 +6,14 @@ import RoomCard from "../../components/RoomCard.astro";
 export async function getStaticPaths() {
     let { data: Building, error } = await supabase
         .from("Building")
-        .select(`BUILDING_CODE, BUILDING_NAME, Rooms ( COLLECTION_CODE )`)
+        .select(`BUILDING_CODE, BUILDING_NAME, Rooms ( COLLECTION_CODE,
+        CONT_SYS_INTERFACE_TYPE,
+        CONTENT_CAPTURE_TYPE,
+        TWO_WAY_VIDEO,
+        WIRELESS_PROJECTION,
+        ASSISTIVE_LISTENING_TYPE,
+        DEPARTMENT_CODE
+        )`)
         .in("BUILDING_CODE", ["HH", "SC", "YR"]);
     return Building?.map((b) => {
         return {
@@ -17,17 +24,20 @@ export async function getStaticPaths() {
 }
 
 const { b } = Astro.props;
-const image = supabase.storage.from("buildings").getPublicUrl(`${b.BUILDING_CODE}/main.jpg`);
+
+// Get building image
+const image = supabase.storage
+    .from("buildings")
+    .getPublicUrl(`${b.BUILDING_CODE}/main.jpg`);
+const imageURL = image.data.publicUrl;
 ---
 
 <Layout title={b.BUILDING_NAME}>
-    <div class="grid grid-cols-2 gap-3">
-        <div class="col-span-1">
-            <img src={image.data.publicUrl} class="h-auto" alt="" srcset="" />
-        </div>
-        <div class="col-span-1">
-            <h1 class="text-3xl">List of {b.BUILDING_NAME} rooms</h1>
-            <RoomCard collection_code={b.Rooms[0].COLLECTION_CODE}/>
+    <div class="">
+        <img src=`${imageURL}` alt="">
+        <div class="">
+            <h1 class="text-3xl">{b.BUILDING_NAME}</h1>
+            <RoomCard collection_code={b.Rooms[0].COLLECTION_CODE} room_type = {b.Rooms[0].COLLECTION_TYPE_CODE}, features = {[b.Rooms[0].CONT_SYS_INTERFACE_TYPE]}  />
         </div>
     </div>
 </Layout>

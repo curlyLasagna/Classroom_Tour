@@ -2,7 +2,6 @@
 import { supabase } from "../../../supabase";
 import Layout from "../../../layouts/Layout.astro";
 import Carousel from "../../../components/Carousel";
-import Slideshow from "../../../components/Slideshow.astro";
 
 export async function getStaticPaths() {
 	const { data: rooms, error } = await supabase
